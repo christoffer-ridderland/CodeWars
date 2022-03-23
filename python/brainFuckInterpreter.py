@@ -27,6 +27,7 @@ def jmpBack(pointer, code, data):
     return pointer          
 
 def brain_luck(code, program_input):
+    program_input += chr(0)
     memory = [0 for i in range(5000)]
     output = ""
     instrP = 0
@@ -35,12 +36,15 @@ def brain_luck(code, program_input):
         instr = code[instrP]
         if instr == '>': dataP = dataP + 1 #% 5001
         elif instr == '<': dataP = dataP -1 #% 5001
-        elif instr == '+': memory[dataP] = (memory[dataP] + 1)
-        elif instr == '-': memory[dataP] = (memory[dataP] - 1)
+        elif instr == '+': memory[dataP] = (memory[dataP] + 1) % 256
+        elif instr == '-': memory[dataP] = (memory[dataP] - 1) % 256
         elif instr == '.': output += chr(memory[dataP])
         elif instr == ',':
-            memory[dataP] = ord(program_input[0])
-            program_input = program_input[1:]
+            if len(program_input) > 0:
+                memory[dataP] = ord(program_input[0])
+                program_input = program_input[1:]
+            else:
+                memory[dataP] = 0
         elif instr == '[': 
             instrP = jmp(instrP, code, memory[dataP])
             continue
@@ -48,4 +52,5 @@ def brain_luck(code, program_input):
             instrP = jmpBack(instrP, code, memory[dataP])
             continue
         instrP += 1
+
     return output

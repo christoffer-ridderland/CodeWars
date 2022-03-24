@@ -52,5 +52,7 @@ def brain_luck(code, program_input):
             instrP = jmpBack(instrP, code, memory[dataP])
             continue
         instrP += 1
-
+    output += chr(10)
     return output
+
+print(brain_luck(open("python/bf.txt","r").read(), ""))

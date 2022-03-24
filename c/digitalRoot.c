@@ -1,4 +1,4 @@
-// Link to challenge: https://www.codewars.com/kata/541c8630095125aba6000c00/train/c
+// Link to challenge: https://www.codewars.com/kata/541c8630095125aba6000c00
 int digital_root(int n) {
     while (n > 9) {
         int tmpN = 0;

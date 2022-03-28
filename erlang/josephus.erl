@@ -1,5 +1,7 @@
 % https://www.codewars.com/kata/555624b601231dc7a400017a
 
+% This solution is very inefficient and times out in CW, will optimize some time
+
 -module(kata).
 -export([josephus_survivor/2, josephus_killer/4]).
 

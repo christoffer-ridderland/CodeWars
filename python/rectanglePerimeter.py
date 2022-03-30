@@ -2,8 +2,8 @@
 def perimeter(n):
     a = 0
     b = 1
-    sum = 0
+    sum = 1
     for _ in range(n):
         a, b = b, a+b
-        sum += 4 * b
-    return sum + 4 # does not count first square
+        sum += b
+    return sum * 4
